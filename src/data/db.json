@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "clients": [
+    {
+      "id": "de02bf8f-44a5-421e-7678-cdce0913fb80",
+      "name": "Paul",
+      "lastName": "Landaeta",
+      "company": "Mojix"
+    },
+    {
+      "id": "de02bf8f-aaa5-uu88-b052-cdce0913fb80",
+      "name": "Alexis",
+      "lastName": "Marechal",
+      "company": "UPB"
+    },
+    {
+      "id": "76373470-f6b5-4167-9023-ceba75c30a4b",
+      "name": "Paul 2",
+      "lastName": "Flores",
+      "company": "Digital"
+    }
+  ]
+}

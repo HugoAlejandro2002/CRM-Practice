@@ -12,7 +12,7 @@ import HomePage from './pages/HomePage';
 import LayoutPage from './pages/LayoutPage';
 import ProductsPage from './pages/ProductsPage';
 import ClientsPage from './pages/ClientsPage';
-import { getClients } from './services/clientsService';
+import { getClient, getClients } from './services/clientsService';
 import ErrorPage from './pages/ErrorPage';
 import AddClientPage from './pages/AddClientPage';
 
@@ -42,8 +42,11 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>
       },
       {
-        path:'add-client',
-        element:<AddClientPage/>
+        path:'add-client/:clientID?',
+        element:<AddClientPage/>,
+        loader: async (id) =>{
+          return await getClient(id)
+        }
       },
     ]
   },

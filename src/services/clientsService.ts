@@ -13,3 +13,7 @@ export const addClients = async (client:ClientInterface) => {
 export const deleteClient = async (client:ClientInterface) => {
     crmAPI.delete(`/clients/${client.id}`);
 }
+
+export const getClient = async (client:string) => {
+    return crmAPI.get(`/clients/${client}`);
+}

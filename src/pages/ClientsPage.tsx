@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import ClientInterface from '../Models/ClientInterface'
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import ClientTable from '../components/ClientTable';
 import { deleteClient } from '../services/clientsService';
 
 const ClientsPage = () => {
+
+  const navigate = useNavigate();
 
   const [clients, setClients] = useState<ClientInterface[]>([]);
   const { data }: any = useLoaderData();
@@ -28,6 +30,11 @@ const ClientsPage = () => {
   };
 
   const handleEdit = (updatedClient: ClientInterface) => {
+    navigate(`/home/add-client/${updatedClient.id}`,{
+      state:{
+        ...updatedClient
+      }
+    })
     // Actualizar el cliente en el arreglo 'clients'
     const updatedClients = clients.map((client) =>
       client.id === updatedClient.id ? updatedClient : client

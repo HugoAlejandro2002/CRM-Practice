@@ -31,14 +31,14 @@ const AddClientPage = () => {
       } else {
         await addClients(client);
       }
-      navigate('/Home/clients'); // Redirigir después de guardar/actualizar el cliente
+      navigate('/home/clients'); // Redirigir después de guardar/actualizar el cliente
     } catch (error) {
       console.error('Error al agregar/actualizar el cliente:', error);
     }
   };
 
   const handleCancel = () => {
-    navigate('/Home/clients'); // Redirigir al cancelar
+    navigate('/home/clients'); // Redirigir al cancelar
   };
 
   return (

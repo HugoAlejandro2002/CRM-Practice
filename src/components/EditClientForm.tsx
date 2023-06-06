@@ -6,7 +6,7 @@ import ClientInterface from '../Models/ClientInterface';
 interface EditFormProps {
   onSave: (client: ClientInterface) => void;
   onCancel: () => void;
-  initialData?: ClientInterface; 
+  initialData?: ClientInterface;
 }
 
 const EditClientForm = ({ onSave, onCancel, initialData }: EditFormProps) => {
@@ -33,7 +33,7 @@ const EditClientForm = ({ onSave, onCancel, initialData }: EditFormProps) => {
 
   return (
     <div className="max-w-md mx-auto mt-8">
-      <h2 className="text-2xl font-bold mb-4">Agregar Cliente</h2>
+      <h2 className="text-2xl font-bold mb-4">{initialData ? 'Editar Cliente' : 'Agregar Cliente'}</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <label className="block mb-1">Nombre:</label>
@@ -52,7 +52,10 @@ const EditClientForm = ({ onSave, onCancel, initialData }: EditFormProps) => {
         </div>
         <div className="flex justify-end">
           <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-2">Guardar</button>
-          <button type="button" onClick={onCancel} className="border border-gray-300 py-2 px-4 rounded">Cancelar</button>
+          {initialData && (
+            <button type="button" onClick={onCancel} className="border border-gray-300 py-2 px-4 rounded">Cancelar</button>
+          )}
+
         </div>
       </form>
     </div>

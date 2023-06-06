@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
 import ClientInterface from '../Models/ClientInterface';
@@ -6,14 +6,25 @@ import ClientInterface from '../Models/ClientInterface';
 interface EditFormProps {
   onSave: (client: ClientInterface) => void;
   onCancel: () => void;
+  initialData?: ClientInterface; 
 }
 
-const EditClientForm = ({ onSave, onCancel }: EditFormProps) => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+const EditClientForm = ({ onSave, onCancel, initialData }: EditFormProps) => {
+  const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
+
+  useEffect(() => {
+    if (initialData) {
+      console.log(initialData)
+      // Establecer los valores iniciales del formulario
+      setValue('name', initialData.name);
+      setValue('lastName', initialData.lastName);
+      setValue('company', initialData.company);
+    }
+  }, [initialData, setValue]);
 
   const onSubmit = (data: ClientInterface) => {
     const newClient: ClientInterface = {
-      id: uuidv4(),
+      id: initialData ? initialData.id : uuidv4(), // Usar ID existente o generar uno nuevo
       ...data,
     };
     onSave(newClient);

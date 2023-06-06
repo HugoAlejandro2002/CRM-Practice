@@ -1,26 +1,20 @@
 import React, { useEffect } from 'react';
 import ClientInterface from '../Models/ClientInterface';
-import { addClients, getClientById, updateClient } from '../services/clientsService';
+import { addClients, updateClient } from '../services/clientsService';
 import EditClientForm from '../components/EditClientForm';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 
 const AddClientPage = () => {
   const { clientID }: any = useParams();
   const navigate = useNavigate();
   const [clientData, setClientData] = React.useState<ClientInterface | null>(null);
+  const { data }: any = useLoaderData();
+  
+
 
   useEffect(() => {
     if (clientID) {
-      // Cargar datos del cliente existente si se proporciona clientID
-      const fetchClient = async () => {
-        try {
-          const client = await getClientById(clientID);
-          setClientData(client.data);
-        } catch (error) {
-          console.error('Error al cargar los datos del cliente:', error);
-        }
-      };
-      fetchClient();
+      setClientData(data)
     }
   }, [clientID]);
 

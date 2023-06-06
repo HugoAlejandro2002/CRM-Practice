@@ -12,7 +12,7 @@ import HomePage from './pages/HomePage';
 import LayoutPage from './pages/LayoutPage';
 import ProductsPage from './pages/ProductsPage';
 import ClientsPage from './pages/ClientsPage';
-import { getClients, getClientById, addClients } from './services/clientsService';
+import { getClients, getClientById } from './services/clientsService';
 import ErrorPage from './pages/ErrorPage';
 import AddClientPage from './pages/AddClientPage';
 
@@ -44,13 +44,13 @@ const router = createBrowserRouter([
       {
         path:'add-client/:clientID?',
         element:<AddClientPage/>,
-        loader: async (params) =>{
+        loader: async ({params}) =>{
           const { clientID } = params;
           if (clientID) {
             return await getClientById(clientID);
-          } else {
-            return null;
-          }
+          } 
+          return {};
+          
         }
       },
     ]

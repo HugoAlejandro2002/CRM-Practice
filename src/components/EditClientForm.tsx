@@ -14,7 +14,6 @@ const EditClientForm = ({ onSave, onCancel, initialData }: EditFormProps) => {
 
   useEffect(() => {
     if (initialData) {
-      console.log(initialData)
       // Establecer los valores iniciales del formulario
       setValue('name', initialData.name);
       setValue('lastName', initialData.lastName);
